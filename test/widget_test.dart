@@ -9,22 +9,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:stablemanager/main.dart';
+import 'package:stablemanager/theme/theme.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp());
+  testWidgets('MyApp should exist', (WidgetTester tester) async {
+    final widget = MyApp();
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    await tester.pumpWidget(widget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    final widgetPredicate = (Widget widget) =>
+        widget is MaterialApp &&
+        // widget.title == "CoronaOnFire" &&
+        widget.theme == AppTheme.light();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(find.byWidgetPredicate(widgetPredicate), findsOneWidget);
   });
+
 }
