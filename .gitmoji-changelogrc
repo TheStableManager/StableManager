@@ -1,0 +1,7 @@
+{
+  "project": {
+    "name": "StableManager",
+    "description": "App to manage stable related stuff.",
+    "version": "0.1.0"
+  }
+}
