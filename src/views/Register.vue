@@ -36,16 +36,19 @@
                 <div class="my-2" />
                 <div class="text-center text-h4">or be classical</div>
                 <v-text-field
+                  v-model.trim="form.name"
                   type="text"
                   placeholder="First Name..."
                   prepend-icon="mdi-face"
                 />
                 <v-text-field
+                  v-model.trim="form.email"
                   type="email"
                   placeholder="Email..."
                   prepend-icon="mdi-email"
                 />
                 <v-text-field
+                  v-model.trim="form.password"
                   type="password"
                   placeholder="Password..."
                   prepend-icon="mdi-lock-outline"
@@ -70,7 +73,9 @@
                     </div>
                   </template>
                 </v-checkbox>
-                <v-btn depressed rounded min-width="140" color="primary">Get Started</v-btn>
+                <v-btn depressed rounded min-width="140" color="primary" @click="signup()">
+                  Get Started
+                </v-btn>
               </div>
             </v-col>
           </v-row>
@@ -97,6 +102,21 @@ export default {
         text: 'We build this app for stable and horse owners to simplify their managemant.',
       },
     ],
+    form: {
+      name: '',
+      email: '',
+      password: '',
+    },
   }),
+
+  methods: {
+    signup() {
+      this.$store.dispatch('auth/signup', {
+        name: this.form.name,
+        email: this.form.email,
+        password: this.form.password,
+      });
+    },
+  },
 };
 </script>

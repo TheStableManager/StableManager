@@ -23,17 +23,19 @@
           <v-card-text class="text-center">
             <div class="text-center font-weight-light">Or Be Classical</div>
             <v-text-field
+              v-model.trim="form.email"
               placeholder="Email..."
               prepend-icon="mdi-email"
               class="mt-10"
             />
             <v-text-field
+              v-model.trim="form.password"
               type="password"
               placeholder="Password..."
               prepend-icon="mdi-lock-outline"
               class="mb-8"
             />
-            <v-btn depressed rounded min-width="140" color="primary">Login</v-btn>
+            <v-btn depressed rounded min-width="140" color="primary" @click="login()">Login</v-btn>
           </v-card-text>
         </material-card>
       </v-col>
@@ -48,6 +50,22 @@ export default {
   metaInfo: {
     title: 'Login',
     titleTemplate: '%s | TheStableManager',
+  },
+
+  data: () => ({
+    form: {
+      email: '',
+      password: '',
+    },
+  }),
+
+  methods: {
+    login() {
+      this.$store.dispatch('auth/login', {
+        email: this.form.email,
+        password: this.form.password,
+      });
+    },
   },
 };
 </script>
