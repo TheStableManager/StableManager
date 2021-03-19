@@ -33,7 +33,7 @@
               prepend-icon="mdi-lock-outline"
               class="mb-8"
             />
-            <v-btn color="primary">Login</v-btn>
+            <v-btn depressed rounded min-width="140" color="primary">Login</v-btn>
           </v-card-text>
         </material-card>
       </v-col>
