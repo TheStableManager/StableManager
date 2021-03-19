@@ -93,8 +93,8 @@ export default {
       {
         icon: 'mdi-account-multiple',
         color: 'primary',
-        title: 'Built Audience',
-        text: 'There is also a Fully Customizable CMS Admin Dashboard for this product.',
+        title: 'From horse owners for horse owners',
+        text: 'We build this app for stable and horse owners to simplify their managemant.',
       },
     ],
   }),
