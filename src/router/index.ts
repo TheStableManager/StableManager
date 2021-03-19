@@ -34,6 +34,6 @@ const router = new Router({
 router.beforeEach((to, from, next) => (to.path.endsWith('/') ? next() : next(trailingSlash(to.path))));
 router.beforeEach((to, from, next) => (to.path.endsWith('/manager/') ? next('/manager/dashboard') : next()));
 router.beforeEach((to, from, next) => ((to.matched.some((x) => x.meta.requiresAuth) && !auth.currentUser) ? next('/login') : next()));
-router.beforeEach((to, from, next) => ((to.path.match('/login')) && auth.currentUser) ? next('/manager/dashboard') : next());
+router.beforeEach((to, from, next) => ((to.path.match('/login') && auth.currentUser) ? next('/manager/dashboard') : next()));
 
 export default router;
