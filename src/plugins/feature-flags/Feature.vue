@@ -15,7 +15,9 @@ export default {
 
   computed: {
     enabled() {
-      return this.$store.state.featureFlags.enabledFeatures[this.name] !== this.disabled;
+      return this.$store.state.featureFlags.enabledFeatures[this.name] !== undefined
+        ? this.$store.state.featureFlags.enabledFeatures[this.name] !== this.disabled
+        : this.disabled;
     },
   },
 
