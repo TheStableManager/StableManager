@@ -2,6 +2,7 @@
 node_modules
 /dist
 
+/src/.featureFlagsConfig.ts
 /src/.firebaseConfig.ts
 .firebase
 .firebaserc

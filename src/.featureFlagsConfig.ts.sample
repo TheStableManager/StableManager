@@ -1,0 +1,7 @@
+const featureFlagConfig = {
+  appName: '',
+  host: '',
+  instanceId: ''
+};
+
+export default featureFlagConfig;

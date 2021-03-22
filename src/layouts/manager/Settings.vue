@@ -16,7 +16,6 @@
     </v-card>
 
     <v-menu
-      v-model="menu"
       :close-on-content-click="false"
       activator="#settings"
       bottom

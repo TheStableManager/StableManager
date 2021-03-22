@@ -1,18 +1,22 @@
 <template>
   <v-app>
-    <v-img
-      dark
-      gradient="to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)"
-      src="@/assets/bg-stable.jpg"
-      height="100vh"
-      min-height="100vh"
-    >
-      <default-bar />
+    <v-main style="padding: 0">
+      <v-img
+        dark
+        gradient="to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)"
+        src="@/assets/bg-stable.jpg"
+        height="100vh"
+        min-height="100vh"
+      >
+        <div class="d-block d-md-flex fill-height">
+          <default-bar />
 
-      <default-view />
+          <default-view />
 
-      <default-footer />
-    </v-img>
+          <default-footer />
+        </div>
+      </v-img>
+    </v-main>
   </v-app>
 </template>
 

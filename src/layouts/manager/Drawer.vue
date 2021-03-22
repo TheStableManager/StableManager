@@ -14,7 +14,6 @@
       #img="props"
     >
       <v-img
-        :key="image"
         gradient="rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)"
         v-bind="props"
       />

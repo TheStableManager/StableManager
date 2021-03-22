@@ -1,9 +1,5 @@
 <template>
-  <v-main>
-    <v-container fluid>
-      <router-view :key="$route.path" />
-    </v-container>
-  </v-main>
+  <router-view :key="$route.path" />
 </template>
 
 <script>

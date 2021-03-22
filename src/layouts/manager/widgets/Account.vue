@@ -31,6 +31,15 @@
           class="mb-2 mt-2"
         />
 
+        <v-list-item
+          v-else-if="p.logout"
+          :key="`item-${i}`"
+          @click="logout"
+          class="logout"
+        >
+          <v-list-item-title>Log out</v-list-item-title>
+        </v-list-item>
+
         <app-bar-item
           v-else
           :key="`item-${i}`"
@@ -52,8 +61,31 @@ export default {
       { title: 'Profile', to: '/manager/user/profile' },
       { title: 'Settings', to: '/manager/user/settings' },
       { divider: true },
-      { title: 'Log out', to: '/logout' },
+      { logout: true },
     ],
   }),
+
+  methods: {
+    logout() {
+      this.$store.dispatch('auth/logout');
+    },
+  },
 };
 </script>
+
+<style lang="css">
+.logout:hover {
+  color: #FFFFFF !important;
+  caret-color: #FFFFFF !important;
+  background-color: #9c27b0 !important;
+  border-color: #9c27b0 !important;
+  box-shadow:
+    0 16px 38px -12px rgba(0, 0, 0, 0.56),
+    0 4px 25px 0 rgba(0, 0, 0, 0.12),
+    0 8px 10px -5px rgba(0, 0, 0, 0.2) !important;
+}
+.logout {
+  color: #000000;
+  caret-color: #000000;
+}
+</style>
