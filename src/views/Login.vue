@@ -16,7 +16,7 @@
                 <div class="text-h4 font-weight-bold white--text">Login</div>
                 <div class="mt-4">
                   <feature name="login_disabled_google" disabled>
-                    <v-btn icon class="mx-2" rounded>
+                    <v-btn icon class="mx-2" @click="loginWithGoogle()" rounded>
                       <v-icon aria-hidden="true">mdi-google-plus</v-icon>
                     </v-btn>
                   </feature>
@@ -90,6 +90,9 @@ export default {
         email: this.form.email,
         password: this.form.password,
       });
+    },
+    loginWithGoogle() {
+      this.$store.dispatch('auth/loginWithGoogle');
     },
   },
 };

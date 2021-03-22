@@ -31,7 +31,16 @@
             <v-col cols="12" md="6">
               <feature name="registration_disabled" disabled>
                 <div class="text-center">
-                  <v-btn depressed fab rounded small dark color="rgb(219,68,55)" class="my-2 mr-1">
+                  <v-btn
+                    depressed
+                    fab
+                    rounded
+                    small
+                    dark
+                    color="rgb(219,68,55)"
+                    class="my-2 mr-1"
+                    @click="signupWithGoogle()"
+                  >
                     <v-icon aria-hidden="true">mdi-google-plus</v-icon>
                   </v-btn>
                   <div class="my-2" />
@@ -125,6 +134,9 @@ export default {
         email: this.form.email,
         password: this.form.password,
       });
+    },
+    signupWithGoogle() {
+      this.$store.dispatch('auth/signupWithGoogle');
     },
   },
 };

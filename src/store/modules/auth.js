@@ -2,6 +2,8 @@
 import { make } from 'vuex-pathify';
 import router from '@/router'
 import * as fb from '@/firebase';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 // Data
 const state = {
@@ -25,14 +27,35 @@ const actions = {
     // redirect to manager view
     router.push('/manager')
   },
+  async loginWithGoogle({ dispatch }) {
+    const provider = new firebase.auth.GoogleAuthProvider();
+
+    // sign user in
+    const { user } = await fb.auth.signInWithPopup(provider)
+
+    // fetch user profile and set in state
+    dispatch('fetchUserProfile', user)
+
+    // redirect to manager view
+    router.push('/manager')
+  },
   async signup({ dispatch }, form) {
     // sign user up
     const { user } = await fb.auth.createUserWithEmailAndPassword(form.email, form.password)
 
-    // create user object in userCollections
-    await fb.usersCollection.doc(user.uid).set({
-      name: form.name
-    })
+    await user.updateProfile({displayName: form.name})
+
+    // fetch user profile and set in state
+    dispatch('fetchUserProfile', user)
+
+    // redirect to manager view
+    router.push('/manager')
+  },
+  async signupWithGoogle({ dispatch }) {
+    const provider = new firebase.auth.GoogleAuthProvider();
+
+    // sign user in
+    const { user } = await fb.auth.signInWithPopup(provider)
 
     // fetch user profile and set in state
     dispatch('fetchUserProfile', user)
