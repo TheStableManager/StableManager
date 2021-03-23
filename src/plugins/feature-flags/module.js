@@ -1,5 +1,5 @@
 import axios from 'axios';
-import keyBy from 'lodash.keyby';
+import keyBy from 'lodash/keyBy';
 import Vue from 'vue';
 
 const moduleFactory = ({ host, appName, namePrefix, instanceId, strategyProviders = {} }) => ({

@@ -5,7 +5,6 @@ import { auth } from '@/firebase';
 import '@/registerServiceWorker';
 import router from '@/router';
 import '@/plugins';
-import 'vuetify';
 import vuetify from '@/plugins/vuetify';
 import App from '@/App.vue';
 
