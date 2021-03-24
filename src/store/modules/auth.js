@@ -1,9 +1,9 @@
-// Pathify
+import { GoogleAuthProvider, browserPopupRedirectResolver, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
+import { auth, usersCollection } from '@/firebase';
+import { doc, getDoc, updateDoc } from 'firebase/firestore/lite';
+
 import { make } from 'vuex-pathify';
 import router from '@/router'
-import { auth, usersCollection } from '@/firebase';
-import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, createUserWithEmailAndPassword, signOut, browserPopupRedirectResolver } from 'firebase/auth';
-import { doc, getDoc, updateDoc } from 'firebase/firestore';
 
 // Data
 const state = {

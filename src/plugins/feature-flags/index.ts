@@ -1,7 +1,9 @@
-import { moduleFactory } from './module';
 import Feature from './Feature.vue';
+import moduleFactory from './module';
 
-const install = (Vue, { appName, namePrefix, host, instanceId, strategyProviders, store }) => {
+const install = (Vue, {
+  appName, namePrefix, host, instanceId, strategyProviders, store,
+}) => {
   if (!host) {
     throw new Error('Please initialize plugin with a Unleash host.');
   }
@@ -11,14 +13,16 @@ const install = (Vue, { appName, namePrefix, host, instanceId, strategyProviders
   }
 
   Vue.config.applicationHostname = 'localhost';
-  store.registerModule('featureFlags', moduleFactory({ host, appName, namePrefix, instanceId, strategyProviders }));
+  store.registerModule('featureFlags', moduleFactory({
+    host, appName, namePrefix, instanceId, strategyProviders,
+  }));
   Vue.component('feature', Feature);
   store.dispatch('featureFlags/fetch');
 };
 
 const plugin = {
   Feature,
-  install
+  install,
 };
 
 export default plugin;

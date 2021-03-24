@@ -1,8 +1,10 @@
-import axios from 'axios';
-import keyBy from 'lodash/keyBy';
 import Vue from 'vue';
+import axios from 'axios';
+import { keyBy } from 'lodash/core';
 
-const moduleFactory = ({ host, appName, namePrefix, instanceId, strategyProviders = {} }) => ({
+const moduleFactory = ({
+  host, appName, namePrefix, instanceId, strategyProviders = {},
+}) => ({
   actions: {
     async fetch({ commit }) {
       commit('setLoading', true);
@@ -13,9 +15,9 @@ const moduleFactory = ({ host, appName, namePrefix, instanceId, strategyProvider
           {
             headers: {
               'UNLEASH-APPNAME': appName,
-              'UNLEASH-INSTANCEID': instanceId
-            }
-          }
+              'UNLEASH-INSTANCEID': instanceId,
+            },
+          },
         );
 
         commit('setFeatures', data.features);
@@ -25,7 +27,7 @@ const moduleFactory = ({ host, appName, namePrefix, instanceId, strategyProvider
       } finally {
         commit('setLoading', false);
       }
-    }
+    },
   },
 
   mutations: {
@@ -46,13 +48,13 @@ const moduleFactory = ({ host, appName, namePrefix, instanceId, strategyProvider
         return result;
       }, {});
 
-      Vue.set(state, 'enabledFeatures', Object.assign({}, enabledFeatures));
-      Vue.set(state, 'features', Object.assign({}, keyBy(features, 'name')));
+      Vue.set(state, 'enabledFeatures', { ...enabledFeatures });
+      Vue.set(state, 'features', { ...keyBy(features, 'name') });
     },
 
     setLoading(state, loading) {
       state.loading = loading;
-    }
+    },
   },
 
   namespaced: true,
@@ -60,8 +62,8 @@ const moduleFactory = ({ host, appName, namePrefix, instanceId, strategyProvider
   state: {
     enabledFeatures: {},
     features: {},
-    loading: true
-  }
+    loading: true,
+  },
 });
 
-export { moduleFactory };
+export default moduleFactory;

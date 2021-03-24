@@ -69,12 +69,22 @@
 </template>
 
 <script>
+import {
+  VInput, VLabel, VMessages, VTextField,
+} from 'vuetify/lib';
 
 export default {
   name: 'LoginView',
   metaInfo: {
     title: 'Login',
     titleTemplate: '%s | TheStableManager',
+  },
+
+  components: {
+    VInput,
+    VLabel,
+    VMessages,
+    VTextField,
   },
 
   data: () => ({

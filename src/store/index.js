@@ -1,13 +1,10 @@
-// Vue
+import * as modules from '@/store/modules';
+
+import FeatureFlags from '@/plugins/feature-flags';
 import Vue from 'vue';
 import Vuex from 'vuex';
-import FeatureFlags from '@/plugins/feature-flags';
-import pathify from '@/plugins/vuex-pathify';
-
 import featureFlagsConfig from '@/.featureFlagsConfig';
-
-// Modules
-import * as modules from '@/store/modules';
+import pathify from '@/plugins/vuex-pathify';
 
 Vue.use(Vuex);
 

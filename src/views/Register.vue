@@ -104,11 +104,22 @@
 </template>
 
 <script>
+import {
+  VInput, VLabel, VMessages, VTextField,
+} from 'vuetify/lib';
+
 export default {
   name: 'RegisterView',
   metaInfo: {
     title: 'Register',
     titleTemplate: '%s | TheStableManager',
+  },
+
+  components: {
+    VInput,
+    VLabel,
+    VMessages,
+    VTextField,
   },
 
   data: () => ({

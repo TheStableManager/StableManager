@@ -5,12 +5,18 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "make:component": "vue-cli-service make:component",
+    "make:directive": "vue-cli-service make:directive",
+    "make:layout": "vue-cli-service make:layout",
+    "make:mixin": "vue-cli-service make:mixin",
+    "make:view": "vue-cli-service make:view"
   },
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "firebase": "^0.900.19",
+    "lodash": "^4.17.15",
     "register-service-worker": "^1.7.1",
     "roboto-fontface": "*",
     "vue": "^2.6.11",
@@ -57,13 +63,14 @@
     "eslint-plugin-vuetify": "^1.0.0-beta.6",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-webpack-plugin": "^2.4.2",
-    "lodash": "^4.17.15",
     "open": "^7.0.3",
+    "pluralize": "^8.0.0",
     "sass": "^1.32.0",
     "sass-loader": "^10.0.0",
     "shelljs": "^0.8.4",
     "typescript": "~3.9.3",
     "vue-cli-plugin-vuetify": "~2.2.2",
+    "vue-cli-plugin-vuetify-cli": "~0.2.2",
     "vue-template-compiler": "^2.6.11",
     "vuetify-loader": "^1.7.0",
     "webpack": "^4.43.0"
