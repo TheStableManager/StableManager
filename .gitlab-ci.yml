@@ -1,13 +1,12 @@
 image: node:latest
 
 before_script:
+  - echo "$FIREBASE_CONFIG" > src/.firebaseConfig.ts
+  - echo "$FEATURE_FLAGS_CONFIG" > src/.featureFlagsConfig.ts
   - npm i -g firebase-tools
 
 deploy-hosting:
   stage: deploy
-  before_script:
-    - echo "$FIREBASE_CONFIG" > src/.firebaseConfig.ts
-    - echo "$FEATURE_FLAGS_CONFIG" > src/.featureFlagsConfig.ts
   script:
     - npm i
     - npm run build
