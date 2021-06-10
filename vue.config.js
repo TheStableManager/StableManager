@@ -10,6 +10,18 @@ module.exports = {
   ],
   pwa: {
     name: 'StableManager',
+    manifestOptions: {
+      // eslint-disable-next-line @typescript-eslint/camelcase
+      start_url: '/',
+    },
+    workboxPluginMode: 'InjectManifest',
+    workboxOptions: {
+      swSrc: 'src/service-worker.js',
+      exclude: [
+        /\.map$/,
+        /manifest\.json$/,
+      ],
+    },
   },
   chainWebpack: (config) => {
     config
