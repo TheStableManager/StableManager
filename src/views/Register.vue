@@ -29,7 +29,7 @@
               </v-row>
             </v-col>
             <v-col cols="12" md="6">
-              <feature name="registration_disabled" disabled>
+              <feature name="registration_enabled">
                 <div class="text-center">
                   <v-btn
                     depressed
@@ -88,7 +88,7 @@
                   </v-btn>
                 </div>
               </feature>
-              <feature name="registration_disabled">
+              <feature name="registration_enabled" disabled>
                 <div class="text-center">
                   <v-card-text class="text-center">
                     <div class="text-center text-h4">Registration is currently disabled!</div>
@@ -104,11 +104,22 @@
 </template>
 
 <script>
+import {
+  VInput, VLabel, VMessages, VTextField,
+} from 'vuetify/lib';
+
 export default {
   name: 'RegisterView',
   metaInfo: {
     title: 'Register',
     titleTemplate: '%s | TheStableManager',
+  },
+
+  components: {
+    VInput,
+    VLabel,
+    VMessages,
+    VTextField,
   },
 
   data: () => ({

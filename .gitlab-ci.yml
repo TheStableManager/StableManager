@@ -1,0 +1,16 @@
+image: node:latest
+
+before_script:
+  - npm i -g firebase-tools
+
+deploy-hosting:
+  stage: deploy
+  script:
+    - npm install
+    - npm build
+    - firebase deploy --only hosting --token $FIREBASE_TOKEN
+  only:
+    - master
+  environment:
+    name: production
+    url: https://thestablemanager.com

@@ -2,7 +2,7 @@
   <v-container id="login-view" fill-height tag="section">
     <v-row justify="center">
       <v-col cols="12">
-        <feature name="login_disabled" disabled>
+        <feature name="login_enabled">
           <material-card
             max-width="350"
             class="mx-auto"
@@ -15,7 +15,7 @@
               <div class="text-center pa-5">
                 <div class="text-h4 font-weight-bold white--text">Login</div>
                 <div class="mt-4">
-                  <feature name="login_disabled_google" disabled>
+                  <feature name="login_enabled_google">
                     <v-btn icon class="mx-2" @click="loginWithGoogle()" rounded>
                       <v-icon aria-hidden="true">mdi-google-plus</v-icon>
                     </v-btn>
@@ -44,7 +44,7 @@
             </v-card-text>
           </material-card>
         </feature>
-        <feature name="login_disabled">
+        <feature name="login_enabled" disabled>
           <material-card
             max-width="350"
             class="mx-auto"
@@ -69,12 +69,22 @@
 </template>
 
 <script>
+import {
+  VInput, VLabel, VMessages, VTextField,
+} from 'vuetify/lib';
 
 export default {
   name: 'LoginView',
   metaInfo: {
     title: 'Login',
     titleTemplate: '%s | TheStableManager',
+  },
+
+  components: {
+    VInput,
+    VLabel,
+    VMessages,
+    VTextField,
   },
 
   data: () => ({

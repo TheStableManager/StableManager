@@ -1,13 +1,13 @@
-import Vue from 'vue';
-import { sync } from 'vuex-router-sync';
-import store from '@/store';
-import { auth } from '@/firebase';
 import '@/registerServiceWorker';
-import router from '@/router';
 import '@/plugins';
-import 'vuetify';
-import vuetify from '@/plugins/vuetify';
+
 import App from '@/App.vue';
+import Vue from 'vue';
+import { auth } from '@/firebase';
+import router from '@/router';
+import store from '@/store';
+import { sync } from 'vuex-router-sync';
+import vuetify from '@/plugins/vuetify';
 
 Vue.config.productionTip = false;
 

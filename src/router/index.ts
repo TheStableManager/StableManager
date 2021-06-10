@@ -1,12 +1,12 @@
-// Imports
-import Vue from 'vue';
-import Router from 'vue-router';
-import { trailingSlash } from '@/util/helpers';
 import {
   layout,
   route,
 } from '@/util/routes';
+
+import Router from 'vue-router';
+import Vue from 'vue';
 import { auth } from '@/firebase';
+import { trailingSlash } from '@/util/helpers';
 
 Vue.use(Router);
 
@@ -22,8 +22,8 @@ const router = new Router({
   routes: [
     layout('Default', [
       route('Home', null),
-      route('Register', null, 'register'),
       route('Login', null, 'login'),
+      route('Register', null, 'register'),
     ]),
     layout('Manager', [
       route('Dashboard', null, 'dashboard', true),

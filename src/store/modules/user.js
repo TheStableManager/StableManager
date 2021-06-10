@@ -1,8 +1,7 @@
-// Utilities
-import { make } from 'vuex-pathify';
-
 // Globals
 import { IN_BROWSER } from '@/util/globals';
+// Utilities
+import { make } from 'vuex-pathify';
 
 const state = {
   dark: false,

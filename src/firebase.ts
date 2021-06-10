@@ -1,16 +1,17 @@
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/firestore';
+import { collection, getFirestore } from 'firebase/firestore/lite';
+
+import { getAuth } from 'firebase/auth';
+import { initializeApp } from 'firebase/app';
 import firebaseConfig from './.firebaseConfig';
 
-const app = firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
 // utils
-const db = app.firestore();
-const auth = app.auth();
+const db = getFirestore(app);
+const auth = getAuth(app);
 
 // collection references
-const usersCollection = db.collection('users');
+const usersCollection = collection(db, 'users');
 
 // export utils/refs
 export {

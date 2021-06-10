@@ -1,9 +1,9 @@
-// Pathify
+import { GoogleAuthProvider, browserPopupRedirectResolver, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
+import { auth, usersCollection } from '@/firebase';
+import { doc, getDoc, updateDoc } from 'firebase/firestore/lite';
+
 import { make } from 'vuex-pathify';
 import router from '@/router'
-import * as fb from '@/firebase';
-import firebase from 'firebase/app';
-import 'firebase/auth';
 
 // Data
 const state = {
@@ -19,7 +19,7 @@ const actions = {
   },
   async login({ dispatch }, form) {
     // sign user in
-    const { user } = await fb.auth.signInWithEmailAndPassword(form.email, form.password)
+    const { user } = await signInWithEmailAndPassword(auth, form.email, form.password)
 
     // fetch user profile and set in state
     dispatch('fetchUserProfile', user)
@@ -28,10 +28,10 @@ const actions = {
     router.push('/manager')
   },
   async loginWithGoogle({ dispatch }) {
-    const provider = new firebase.auth.GoogleAuthProvider();
+    const provider = new GoogleAuthProvider();
 
     // sign user in
-    const { user } = await fb.auth.signInWithPopup(provider)
+    const { user } = await signInWithPopup(auth, provider, browserPopupRedirectResolver)
 
     // fetch user profile and set in state
     dispatch('fetchUserProfile', user)
@@ -41,7 +41,7 @@ const actions = {
   },
   async signup({ dispatch }, form) {
     // sign user up
-    const { user } = await fb.auth.createUserWithEmailAndPassword(form.email, form.password)
+    const { user } = await createUserWithEmailAndPassword(auth, form.email, form.password)
 
     await user.updateProfile({displayName: form.name})
 
@@ -52,10 +52,10 @@ const actions = {
     router.push('/manager')
   },
   async signupWithGoogle({ dispatch }) {
-    const provider = new firebase.auth.GoogleAuthProvider();
+    const provider = new GoogleAuthProvider();
 
     // sign user in
-    const { user } = await fb.auth.signInWithPopup(provider)
+    const { user } = await signInWithPopup(auth, provider, browserPopupRedirectResolver)
 
     // fetch user profile and set in state
     dispatch('fetchUserProfile', user)
@@ -65,14 +65,14 @@ const actions = {
   },
   async fetchUserProfile({ commit }, user) {
     // fetch user profile
-    const userProfile = await fb.usersCollection.doc(user.uid).get()
+    const userProfile = await getDoc(doc(usersCollection, user.uid))
 
     // set user profile in state
     commit('userProfile', userProfile.data())
   },
   async logout({ commit }) {
     // log user out
-    await fb.auth.signOut()
+    await signOut(auth)
 
     // clear user data from state
     commit('userProfile', {})
@@ -81,9 +81,9 @@ const actions = {
     router.push('/login')
   },
   async updateProfile({ dispatch }, user) {
-    const userId = fb.auth.currentUser.uid
+    const userId = auth.currentUser.uid
     // update user object
-    const userRef = await fb.usersCollection.doc(userId).update({
+    const userRef = await updateDoc(doc(usersCollection, userId), {
       name: user.name
     })
 
