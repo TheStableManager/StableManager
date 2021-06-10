@@ -1,6 +1,6 @@
 import { leadingSlash, trailingSlash } from '@/util/helpers';
 
-import { kebabCase } from 'lodash/core';
+import kebabCase from 'lodash/kebabCase';
 
 export function abort(code = 404) {
   return {

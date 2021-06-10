@@ -35,15 +35,15 @@ const moduleFactory = ({
       const enabledFeatures = features.reduce((result, feature) => {
         result[feature.name] = feature.enabled;
 
-        for (const strategy of feature.strategies) {
+        feature.strategies.forEach((strategy) => {
           if (!strategyProviders[strategy.name]) {
-            continue;
+            return;
           }
 
           if (!strategyProviders[strategy.name](strategy.parameters)) {
             result[feature.name] = false;
           }
-        }
+        });
 
         return result;
       }, {});
