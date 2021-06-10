@@ -6,8 +6,8 @@ before_script:
 deploy-hosting:
   stage: deploy
   script:
-    - npm install
-    - npm build
+    - npm i
+    - npm run build
     - firebase deploy --only hosting --token $FIREBASE_TOKEN
   only:
     - master
